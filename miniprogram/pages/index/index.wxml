@@ -1,0 +1,96 @@
+<!--index.wxml-->
+<!-- <view class="container">
+  <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view> -->
+
+<canvas type="webgl" id="webgl"></canvas>
+
+<canvas type="2d" id="board"></canvas>
+
+<view class="main">
+  <view class="header">
+    <view class="left">
+      <view>
+        alpha: {{alpha}}
+      </view>
+      <view>
+        beta: {{beta}}
+      </view>
+      <view>
+        gamma: {{gamma}}
+      </view>
+      <br/>
+      <view>
+        AccelX: {{accelX}}
+      </view>
+      <view>
+        AccelY: {{accelY}}
+      </view>
+      <view>
+        AccelZ: {{accelZ}}
+      </view>
+      <view>
+        GyroX: {{gyroX}}
+      </view>
+      <view>
+        GyroY: {{gyroY}}
+      </view>
+      <view>
+        GyroZ: {{gyroZ}}
+      </view>
+    </view>
+
+    <view class="right">
+      <view>
+        Planar Rotation: {{rotation}}
+      </view>
+      <view>
+        Longitude: {{longitude}}
+      </view>
+      <view>
+        Latitude: {{latitude}}
+      </view>
+      <view>
+        Spher. Coor.: {{x}}, {{y}}, {{z}}
+      </view>
+      <view>
+        proj_x: {{proj_x}}
+      </view>
+      <view>
+        proj_y: {{proj_y}}
+      </view>
+    </view>
+  </view>
+
+  <slider bindchanging="setDistance" step="1" show-value/>
+  <view class="bottom">
+    <button size="mini" bindtap="getLocation">Get Location</button>
+    <button size="mini">Make Beacon</button>
+    <button size="mini" bindtap="draw2D">Render 2d</button>
+  </view>
+
+  <!-- <button bindtap="getLocation" type="primary">
+    Get Location
+  </button> -->
+
+  
+</view>

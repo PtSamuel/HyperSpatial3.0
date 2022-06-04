@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundColor": "#243B6B",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2A57B0",
+    "navigationBarTitleText": "HyperSpatial 3.0",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "小程序需要您的位置信息来定位~"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+button {
+  background-color: #b1b1b1;
+}
+
+#webgl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 80vh;
+}
+
+#board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.main {
+  padding: 5px;
+  align-items: center;
+  z-index: 100;
+  color: #243B6B;
+}
+
+.header {
+  width: 100%;
+  height: 20vh;
+  color: white;
+  font-size: small;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .left {
+  text-align: left;
+}
+
+.header .right {
+  text-align: right;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 20vh;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: transparent;
+  color: #49d8fc;
+  justify-content: space-around;
+}
+
+.bottom button {
+  margin: 0 10rpx;
+  background-color: white;
+  width: 30%;
+  font-size: 12px;
+}
+
+slider {
+  position: absolute;
+  bottom: 200rpx;
+  width: 50%;
+  left: 25%;
+  text-align: center;
+}
