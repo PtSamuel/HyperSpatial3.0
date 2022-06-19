@@ -1,0 +1,40 @@
+<!--pages/records/records.wxml-->
+
+
+<view class="main">
+  <button size="mini" type="primary" bindtap="display">
+    Display Records
+  </button>
+  <button size="mini" type="primary" bindtap="get">
+    Get Records
+  </button>
+
+
+  <input placeholder="Beacon name" bindinput="input"/>
+  <button bindtap="display" type="primary">
+      Display Records
+  </button>
+  <button bindtap="get" type="primary">
+    Get Records
+  </button>
+
+  <view wx:for="{{beacons}}">
+    <view class="entry">
+      <view class="beacon">
+        {{item.name}}: {{item.la}}, {{item.lo}}
+      </view>
+      <!-- <view class="right">
+        <image src="../imgs/delete.png" alt="del" />
+        <image src="../imgs/delete.png" alt="del" />
+      </view> -->
+      <button>
+        Button
+      </button>
+    </view>
+  </view>
+</view>
+
+<view class="search-container">
+  <input type="text" bindinput="searchInputEvent" placeholder="输入书名搜索"></input>
+  <icon bindtap="searchClickEvent" type="search" size="20" />
+</view>

@@ -1,0 +1,59 @@
+/* pages/records/records.wxss */
+
+.main {
+  margin: 5px;
+}
+
+.entry {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border-top: solid #aaaaaa;
+}
+
+.entry > .right {
+  justify-content: right;
+}
+
+.entry button {
+  position: absolute;
+  right: 20px;
+}
+
+.entry > .right image {
+  width: 30px;
+  height: 30px;
+}
+
+.beacon {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #42bd56;
+  color: #fff;
+  height: 80rpx;
+  padding: 10rpx 20rpx;
+  z-index: 100;
+}
+
+.search-container input {
+  background: #fff;
+  color: #aaa;
+  padding: 5px 80rpx 5px 10rpx;
+  height: 40rpx;
+  width: 100%;
+  border-radius: 8rpx;
+}
+
+.search-container icon {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  margin-top: -20rpx;
+  right: 40rpx;
+}

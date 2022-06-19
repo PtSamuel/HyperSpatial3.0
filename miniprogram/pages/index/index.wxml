@@ -22,9 +22,23 @@
   </view>
 </view> -->
 
-<canvas type="webgl" id="webgl"></canvas>
+<view class="viewport">
+  <canvas type="webgl" id="webgl"></canvas>
+  <canvas type="2d" id="board"></canvas>
 
-<canvas type="2d" id="board"></canvas>
+  <view class="bottom">
+    <view>
+      <button size="mini" bindtap="getLocation" type="primary">Get Location</button>
+      <button size="mini">Make Beacon</button>
+      <button size="mini" bindtap="draw2D">Render 2d</button>
+    </view>
+    <view>
+      <button size="mini" bindtap="stopRender">Stop Render</button>
+      <button size="mini" bindtap="startRender">Start Render</button>
+    </view>
+  </view>
+</view>
+
 
 <view class="main">
   <view class="header">
@@ -80,17 +94,5 @@
       </view>
     </view>
   </view>
-
   <slider bindchanging="setDistance" step="1" show-value/>
-  <view class="bottom">
-    <button size="mini" bindtap="getLocation">Get Location</button>
-    <button size="mini">Make Beacon</button>
-    <button size="mini" bindtap="draw2D">Render 2d</button>
-  </view>
-
-  <!-- <button bindtap="getLocation" type="primary">
-    Get Location
-  </button> -->
-
-  
 </view>

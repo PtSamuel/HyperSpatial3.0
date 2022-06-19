@@ -52,6 +52,8 @@ Page({
   width: null,
   height: null,
 
+  render2D: false,
+
   bindViewTap() {
     wx.navigateTo({
       url: '../logs/logs',
@@ -327,6 +329,30 @@ Page({
     })
   },
 
+  stopRender() {
+    wx.stopDeviceMotionListening({
+      success(res) {
+        console.log("Device motion listening stopped" + res)
+      },
+    })
+    wx.stopAccelerometer({
+      success(res) {
+        console.log("Device motion listening stopped" + res)
+      },
+    })
+    wx.stopGyroscope({
+      success(res) {
+        console.log("Device motion listening stopped" + res)
+      },
+    })
+  },
+
+  startRender() {
+    wx.startDeviceMotionListening({
+      "interval": "normal"
+    })
+  },
+
   setDistance(event) {
     var offset = event.detail.value / 100 * (cameraMaxDistance - cameraMininDistance);
     this.setData({
@@ -397,12 +423,9 @@ Page({
         inv[2][0] * trans[0] + inv[2][1] * trans[1] + inv[2][2] * trans[2]
       ]
 
-      // target_pos[0] *= 6371000
-      // target_pos[1] *= 6371000
-      // target_pos[2] *= 6371000
       var normalizedDistance = Math.sqrt(target_pos[0]**2 + target_pos[1]**2 + target_pos[2]**2);
       location.relativePosition = target_pos;
-      console.log(location.position)
+      console.log(location.relativePosition)
       location.distance = normalizedDistance;
     }
 
@@ -433,12 +456,7 @@ Page({
     for(let i = 0; i < this.locations.length; i++)
     {
       var location = this.locations[i]
-      if(location.relativePosition == null)
-      {
-        console.log("Relative position computation is not completed.");
-        this.stopDraw2DUpdate();
-        return;
-      }
+
       var proj = new this.THREE.Vector3(
         location.relativePosition[1] * 6371,
         location.relativePosition[2] * 6371,
@@ -449,10 +467,10 @@ Page({
       proj.multiplyScalar(5)
       proj.project(this.camera)
 
-      this.setData({
-        proj_x: proj.x.toFixed(5),
-        proj_y: proj.y.toFixed(5)
-      })
+      // this.setData({
+      //   proj_x: proj.x.toFixed(5),
+      //   proj_y: proj.y.toFixed(5)
+      // })
 
       var Xabs = Math.abs(proj.x)
       var Yabs = Math.abs(proj.y)
@@ -496,11 +514,21 @@ Page({
     }
   },
 
-  stopDraw2DUpdate() {
-    clearInterval(this.draw2DHelper);
-  },
-
   draw2D() {
+    if(this.render2D) {
+      console.log("Render 2D is already enabled")
+      return
+    }
+    for(let i = 0; i < this.locations.length; i++)
+    {
+      var location = this.locations[i]
+      if(location.relativePosition == null)
+      {
+        console.log("Relative position computation is not completed")
+        return
+      }
+    }
+    this.render2D = true;
     var that = this;
     setInterval(
       that.draw2DHelper, 40

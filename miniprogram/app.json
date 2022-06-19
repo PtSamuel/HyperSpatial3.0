@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/records/records",
     "pages/logs/logs"
   ],
   "window": {
@@ -11,6 +12,20 @@
     "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "pages/imgs/space.png"
+      },
+      {
+        "pagePath": "pages/records/records",
+        "text": "记录",
+        "iconPath": "pages/imgs/records.png"
+      }
+    ] 
+  },
   "style": "v2",
   "permission": {
     "scope.userLocation": {
