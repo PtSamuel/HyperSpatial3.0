@@ -2,39 +2,30 @@
 
 
 <view class="main">
-  <button size="mini" type="primary" bindtap="display">
-    Display Records
-  </button>
-  <button size="mini" type="primary" bindtap="get">
-    Get Records
-  </button>
 
-
-  <input placeholder="Beacon name" bindinput="input"/>
-  <button bindtap="display" type="primary">
+  <input placeholder="Beacon name" style="margin: 20rpx 0;" bindinput="input"/>
+  <button bindtap="display" type="primary" style="opacity: 0;">
       Display Records
   </button>
   <button bindtap="get" type="primary">
     Get Records
   </button>
 
-  <view wx:for="{{beacons}}">
+  <view wx:for="{{beacons}}" class="beacons">
     <view class="entry">
       <view class="beacon">
         {{item.name}}: {{item.la}}, {{item.lo}}
       </view>
-      <!-- <view class="right">
-        <image src="../imgs/delete.png" alt="del" />
-        <image src="../imgs/delete.png" alt="del" />
-      </view> -->
-      <button>
-        Button
-      </button>
+      <view class="right">
+        <icon type="info" bindtap="modify" data-id="{{item._id}}"></icon>
+        <icon type="cancel" bindtap="delete" data-id="{{item._id}}"></icon>
+      </view>
+    </view>
+
+    <view wx:if="{{item.showDetail}}" class="edit">
+      Name: <input placeholder="{{item.name}}" type="text"/>
+      Longitude: <input placeholder="{{item.coords[0]}}" type="text"/>
+      Latitude: <input placeholder="{{item.coords[1]}}" type="text"/>
     </view>
   </view>
-</view>
-
-<view class="search-container">
-  <input type="text" bindinput="searchInputEvent" placeholder="输入书名搜索"></input>
-  <icon bindtap="searchClickEvent" type="search" size="20" />
 </view>

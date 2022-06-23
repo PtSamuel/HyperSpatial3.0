@@ -6,6 +6,8 @@ const clippingDistance = 50;
 const cameraMaxDistance = 25;
 const cameraMininDistance = 2;
 
+const DB = wx.cloud.database().collection("beacons")
+
 Page({
   data: {
     alpha: "",
