@@ -3,21 +3,20 @@
 
 <view class="main">
 
-  <input placeholder="Beacon name" style="margin: 20rpx 0;" bindinput="input"/>
-  <button bindtap="display" type="primary" style="opacity: 0;">
-      Display Records
-  </button>
-  <button bindtap="get" type="primary">
-    Get Records
-  </button>
+  <view class="add">
+    <view class="desc">添加信标</view>
+    <input placeholder="Beacon name" class="nameInput" bindinput="input"/>
+  </view>
 
+  <button type="primary" bindtap="add">添加</button>
+  
   <view wx:for="{{beacons}}" class="beacons">
-    <view class="entry">
+    <view class="entry" bindtap="modify" data-id="{{item._id}}">
       <view class="beacon">
-        {{item.name}}: {{item.la}}, {{item.lo}}
+        {{item.name}}
       </view>
       <view class="right">
-        <icon type="info" bindtap="modify" data-id="{{item._id}}"></icon>
+        <icon type="info"></icon>
         <icon type="cancel" bindtap="delete" data-id="{{item._id}}"></icon>
       </view>
     </view>
@@ -28,4 +27,8 @@
       Latitude: <input placeholder="{{item.coords[1]}}" type="text"/>
     </view>
   </view>
+
+  <button bindtap="get" type="primary" style="margin: 20rpx 0;">
+    刷新
+  </button>
 </view>

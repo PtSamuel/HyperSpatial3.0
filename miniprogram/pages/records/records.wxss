@@ -8,18 +8,23 @@
   margin-bottom: 20rpx;
 }
 
+.add > .nameInput {
+  background-color: #fff;
+  border-width: 2rpx 0;
+  border-color: #cccccc;
+  border-style: solid;
+}
+
+.add > .desc {
+  margin: 10rpx 0;
+}
+
 .entry {
-  /* display: flex;
-  justify-content: space-between;
-  padding: 5px;
-  border-top: solid #aaaaaa;
-  align-items: center; */
   border-top: solid grey 1rpx;
   height: 80rpx;
   padding: 0 15rpx;
   display: flex;
   justify-content: space-between;
-  /* background-color: #1974ef; */
   align-items: center;
   background-color: #2A57B0;
   color: white;
@@ -43,4 +48,8 @@
 
 .edit input {
   background-color: #c5d5f5;
+}
+
+.add {
+  margin-bottom: 50rpx;
 }

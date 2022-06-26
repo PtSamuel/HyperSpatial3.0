@@ -1,3 +1,6 @@
+const appInstance = getApp()
+const DB = appInstance.globalData['DB']
+
 class Beacon {
   constructor(name, coords) {
     this.name = name;
@@ -55,7 +58,27 @@ function registerLocations()
   return registeredLocations
 }
 
+function registerLocationsFromDB()
+{
+  var registeredLocationsFromDB = [];
+  DB.get({
+    success(res) {
+      var beacons = res.data
+      for(let i = 0; i < beacons.length; i++)
+      {
+        registeredLocationsFromDB.push(
+          new Beacon(beacons[i]['name'], beacons[i]['coords'])
+        )
+      }
+    }
+  })
+
+  console.log(registeredLocationsFromDB)
+  return registeredLocationsFromDB
+}
+
 module.exports = {
   Beacon: Beacon,
-  registerLocations: registerLocations
+  registerLocations: registerLocations,
+  registerLocationsFromDB: registerLocationsFromDB
 }

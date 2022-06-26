@@ -1,6 +1,6 @@
 import { registerGLTFLoader } from '../../util/loaders/gltf-loader';
 import { createScopedThreejs } from '../../util/threejs/three';
-import { Beacon, registerLocations } from '../../util/beacon/beacon';
+import { Beacon, registerLocationsFromDB } from '../../util/beacon/beacon';
 
 const clippingDistance = 50;
 const cameraMaxDistance = 25;
@@ -68,7 +68,8 @@ Page({
 
   onLoad() {
 
-    this.locations = registerLocations()
+    // this.locations = registerLocations()
+    this.locations = registerLocationsFromDB()
 
     if (wx.getUserProfile) {
       this.setData({
@@ -125,7 +126,7 @@ Page({
     light.position.set(0, 20, 10);
     scene.add(light);
 
-    var axes = new THREE.AxisHelper(1000);
+    var axes = new THREE.AxesHelper(1000);
     scene.add(axes);
     
     const gridHelper = new THREE.GridHelper(10, 10);

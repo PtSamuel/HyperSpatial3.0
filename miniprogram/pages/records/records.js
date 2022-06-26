@@ -1,13 +1,15 @@
 // pages/records/records.js
 
-const DB = wx.cloud.database().collection("beacons")
+const appInstance = getApp()
+const DB = appInstance.globalData['DB']
+
 Page({
   data: {
     beacons: [],
     showIndex: 0
   },
 
-  showDetails: [],
+  nameInput: null,
 
   display() {
     console.log("display")
@@ -42,7 +44,46 @@ Page({
   },
 
   input(event) {
-    console.log(event)
+    this.nameInput = event.detail.value
+    console.log(this.nameInput)  
+  },
+
+  add(event) {
+    var that = this
+    if(this.nameInput == undefined || this.nameInput == '')
+    {
+      wx.showToast({
+        title: '请输入名称',
+        icon: 'error',
+        duration: 2000
+      })
+      return
+    }
+    wx.getLocation({
+      type: "wgs84",
+      success: function(res){
+        DB.add({
+          data: {
+            name: that.nameInput,
+            coords: [
+              res.longitude, res.latitude,
+            ]
+          }, 
+          success(res) {
+            console.log("Added " + that.nameInput + " successfully.")
+            wx.showToast({
+              title: '添加成功',
+              icon: 'success',
+              duration: 2000
+            })
+            that.get()
+          }
+        })
+      },
+      fail(res) {
+        console.log("getLocation call failure.")
+      }
+    })
   },
 
   modify(event) {
@@ -52,7 +93,6 @@ Page({
     for(let i = 0; i < beacons.length; i++)
       if(beacons[i]['_id'] == id)
         beacons[i]['showDetail'] = !beacons[i]['showDetail'];
-    console.log(this.data)
     this.setData({
       beacons: beacons
     })

@@ -9,7 +9,8 @@ App({
         traceUser: true,
       });
     }
-
-    this.globalData = {};
+    this.globalData = {
+      DB: wx.cloud.database().collection("beacons")
+    };
   }
 });
